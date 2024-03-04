@@ -5,30 +5,33 @@
             <template for:each={result} for:item="product">
                 <div key={product.id} class="card">
                     <template if:true={product.showCarousel}>
-                    <div class="card-carousel">
-                        <div class="carousel">
-                            <template for:each={product.images} for:item="image">
-                                <div key={image} class="carousel-item">
-                                    <img src={image} alt={product.title} />
-                                </div>
-                            </template>
+                        <div class="card-carousel">
+                            <div class="carousel">
+                                <template for:each={product.images} for:item="image">
+                                    <div key={image} class="carousel-item">
+                                        <img src={image} alt={product.title} />
+                                    </div>
+                                </template>
+                            </div>
+                            <button class="carousel-control prev" onclick={prevSlide}>&#10094;</button>
+                            <button class="carousel-control next" onclick={nextSlide}>&#10095;</button>
                         </div>
-                        <button class="carousel-control prev" onclick={prevSlide}>&#10094;</button>
-                        <button class="carousel-control next" onclick={nextSlide}>&#10095;</button>
-                    </div>
-                </template>
-                <template if:false={product.showCarousel}>
-                    <div class="card-image">
-                        <img src={product.mainImage} alt={product.title}/>
-                    </div>
-                </template>
+                    </template>
+                    <template if:false={product.showCarousel}>
+                        <div class="card-image">
+                            <img src={product.mainImage} alt={product.title}/>
+                        </div>
+                    </template>
                     <div class="card-text">
                         <h2>{product.title}</h2>
                         <p>{product.description}</p>
-                        <p>Price: ${product.price}</p>
-                        <p>Rating: {product.rating}</p>
+                        <p class="rating">Rating: <span class="rating-value">{product.rating}</span></p>
+                        <div class="card-stats">
+                            {product.price}$
+                        </div>
                     </div>
                 </div>
+                
             </template>
         </div>
     </div>

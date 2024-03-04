@@ -4,11 +4,20 @@
 }
 
 .card {
-    margin: 20px;
-    width: 300px;
-    border-radius: 10px;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-    background-color: #f9f9f9;
+    position: relative;
+    display: grid;
+    grid-template-columns: 300px;
+    grid-template-rows: auto auto 50px; /* Fixed height for text and stats */
+    grid-template-areas: "image" "text" "stats";
+    border-radius: 18px;
+    background: white;
+    box-shadow: 5px 5px 15px rgba(0, 0, 0, 0.9);
+    font-family: roboto;
+    text-align: center;
+    transition: 0.5s ease;
+    margin: 30px;
+    height: 400px; /* Fixed height for the card */
+    overflow: hidden; /* Ensure contents don't overflow */
 }
 
 .card-carousel {
@@ -35,6 +44,8 @@
 
 .card-text {
     padding: 10px;
+    height: 150px; /* Fixed height for card text */
+    overflow: auto; /* Add overflow to handle long descriptions */
 }
 
 .card h2 {
@@ -49,11 +60,32 @@
     color: #666;
 }
 
+.card-stats {
+    position: absolute; 
+    bottom: 0; 
+    left: 0;
+    width: 100%;
+    grid-area: stats; /* Set grid area */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: #0c0106;
+    color: #fff;
+    font-size: 22px;
+    font-weight: 500;
+    border-bottom-left-radius: 18px; /* Adjusted border radius */
+    border-bottom-right-radius: 18px; /* Adjusted border radius */
+}
+
+.card:hover {
+    transform: scale(1.15);
+    box-shadow: 5px 5px 15px rgba(0, 0, 0, 0.6);
+}
+
 .carousel-control {
     position: absolute;
-    top: 50%;
+    bottom: 10px; /* Adjusted positioning */
     transform: translateY(-50%);
-    background: rgba(255, 255, 255, 0.7);
     border: none;
     color: #333;
     font-size: 24px;
@@ -61,6 +93,11 @@
     z-index: 2;
     border-radius: 50%;
     padding: 5px;
+    background: transparent; /* Remove background */
+}
+
+.content {
+    font-size: 20px;
 }
 
 .carousel-control.prev {
@@ -70,3 +107,22 @@
 .carousel-control.next {
     right: 10px;
 }
+
+.rating {
+    font-size: 18px; 
+    font-weight: bold; 
+}
+
+.rating-value:before {
+    content: "\2605"; /* Unicode character for a star */
+    margin-right: 5px; /* Add some space between the star and the rating */
+}
+.card-image {
+    grid-area: image;
+    border-top-left-radius: 15px;
+    border-top-right-radius: 15px;
+    background-size: cover;
+    max-height: 170px;
+    width: 100%;
+    min-height: 170px;
+  }

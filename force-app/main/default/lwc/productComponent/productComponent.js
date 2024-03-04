@@ -22,7 +22,7 @@ export default class ProductComponent extends LightningElement {
             let rating = product.rating;
             let showCarousel = product.images.length > 1;
             let mainImage = product.images[0];
-            return{ ...product, id:id , price:price, rating:rating, showCarousel:showCarouselת, mainImage:mainImage}
+            return{ ...product, id:id , price:price, rating:rating, showCarousel:showCarousel, mainImage:mainImage}
         })
     }
     nextSlide(event) {
